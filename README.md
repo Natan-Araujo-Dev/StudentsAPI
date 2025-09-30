@@ -4,6 +4,10 @@ Uma API simples para gerenciar estudantes.
 
 ---
 
+Caso queira testar em casa: use seu servidor (é só alterar appsettings.json) ou peça acesso à mim.
+
+---
+
 ## 🚀 Endpoints
 
 ### 📋 Listar todos os alunos  
