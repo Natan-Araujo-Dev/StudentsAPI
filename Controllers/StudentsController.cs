@@ -69,7 +69,7 @@ namespace StudentsAPI.Controllers
 
             await _studentService.PostAsync(newStudent);
 
-            return Created("Criado.", newFirstUniqueLetter);
+            return Created("Criado.", newStudent);
         }
     }
 }
