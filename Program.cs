@@ -1,11 +1,24 @@
+using Microsoft.EntityFrameworkCore;
+using StudentsAPI.ApiDbContext;
+using StudentsAPI.Services;
+using StudentsAPI.Validation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IVerifyStudent, VerifyStudent>();
+builder.Services.AddScoped<IFirstUniqueLetterService, FirstUniqueLetterService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<IStudentsAPIDbContext>(options =>
+    options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection))
+);
 
 var app = builder.Build();
 
